@@ -12,9 +12,10 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
 from .locators import BasePageLocators
+from .locators import BasketPageLocators
 
 class BasePage():
-    def __init__(self, browser , url, timeout = 10):
+    def __init__(self, browser , url, timeout = 5):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -66,3 +67,7 @@ class BasePage():
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def go_to_cart_open(self):
+        link = self.browser.find_element(*BasketPageLocators.CART_LINK)
+        link.click()
