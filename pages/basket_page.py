@@ -24,7 +24,4 @@ class BasketPage(BasePage):
     def should_be_succes_empty_cart(self):
         text_empty = self.browser.find_element(*BasketPageLocators.EMPTY_CART).text
         text_cart = self.browser.find_element(*BasketPageLocators.MESSAGE_CART).text
-        print (text_empty)
-        print ("\n")
-        print(text_cart)
         assert text_empty in text_cart , "No empty text in the text cart"
