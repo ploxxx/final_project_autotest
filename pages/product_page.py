@@ -11,6 +11,7 @@ from .base_page import BasePage
 from .locators import MainPageLocators
 from .login_page import LoginPage
 from .locators import ProductPageLocators
+from .locators import BasePageLocators
 
 
 class ProductPage(BasePage):
@@ -45,3 +46,11 @@ class ProductPage(BasePage):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         # Проверяем, что цена товара присутствует в сообщении со стоимостью корзины
         assert product_price in message_basket_total, "No product price in the message"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ABOUT_ADDING), \
+       "Success message is presented, but should not be"
+    
+    def should_not_be_success_disappered(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ABOUT_ADDING), \
+       "The message didn't disappear"
