@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
-from .pages.product_page import ProductPage
+from pages.product_page import ProductPage
 
 
 def test_guest_can_add_product_to_cart(browser):
